@@ -40,9 +40,10 @@ exports.user_delete = function(req, res) {
 
 //function skin_type_rect(req, res) {
 exports.skin_type_rec = function(req, res) {
-   const name = req.body.result && req.body.result.parameters && req.body.parameters.name ? req.body.result.parameters.name : 'Qwerty';
-   const sType = req.body.result && req.body.result.parameters && req.body.parameters.skinType ? req.body.result.parameters.skinType : 'dry';
-   const problems = req.body.result && req.body.result.parameters && req.body.parameters.problems ? req.body.result.parameters.problems : 'aging';
+   const name = req.body.result && req.body.result.parameters && req.body.result.parameters.name ? req.body.result.parameters.name : 'friend';
+   //const sType = req.body.skinType ? req.body.skinType : 'error';
+   const sType = req.body.result && req.body.result.parameters && req.body.result.parameters.skinType ? req.body.result.parameters.skinType : 'error';
+   const problems = req.body.result && req.body.result.parameters && req.body.result.parameters.problems ? req.body.result.parameters.problems : 'aging';
    var sendingData = '';
    if (sType == 'dry') {
       sendingData = 'For dry skin, I recommend glycerin, PCA, and ceramides. Try to stay away from alcohol.';
@@ -55,18 +56,26 @@ exports.skin_type_rec = function(req, res) {
    } else {
       sendingData = 'I\'m afraid I don\'t recognize your skin type. Could you tell me what it is please?';
    }
+   res.send(sendingData);
 
 // dry, oily, combination, normal
 // acne, acne scarring, aging, dark spots, redness
 // brighten, rough, age spots
 // goodSkin field has 1 max, empty string if bad
-// badSkin field can be 'all' or some specific type or empty string 
+// badSkin field can be 'all' or some specific type or empty string
 
-   return res.json({
-      speech: sendingData,
-      displayText: sendingData,
-      source: 'please-be-more-chill'
-   });
+// get app on heroku
+// put heroku address in dialogflow fulfillment tab
+// test out the parameters returning
+// add a function for grabbing data from database in response to asking about ingredients
+// which should be easy except for the actual data grab
+// don't forget the nice web page on handling 2 intents--it's in the actions
+
+   // return res.json({
+   //    speech: sendingData,
+   //    displayText: sendingData,
+   //    source: 'please-be-more-chill'
+   // });
 
 };
 
