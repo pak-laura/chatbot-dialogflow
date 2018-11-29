@@ -1,4 +1,6 @@
 const User = require('../models/user.model');
+var mongoose = require('mongoose')
+var ingredients = mongoose.model('IngredSchema')
 
 exports.test = function(req, res) {
    res.send('hi from user controller test');
@@ -83,6 +85,43 @@ function skin_type_red(req, res) {
       words: 'testing skin_type_red'
    });
 }
+
+//get ingredient description
+function getIngredient(req,res) {
+let ingredientToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.name ? req.body.result.parameters.name : 'Unknown';
+ingredients.findOne({name:ingredientToSearch},function(err,ingredientExists)
+      {
+        if (err)
+        {
+          return res.json({
+              speech: 'Something went wrong!',
+              displayText: 'Something went wrong!',
+              source: 'ingrediet info'
+          });
+        }
+if (ingredientExists)
+        {
+          return res.json({
+                speech: ingredientExists.description,
+                displayText: ingredientExists.description,
+                source: 'ingredient info'
+            });
+        }
+        else {
+          return res.json({
+                speech: 'Currently I am not having information about this ingredient',
+                displayText: 'Currently I am not having information about this ingredient',
+                source: 'ingredient info'
+            });
+        }
+      });
+}
+
+exports.processRequest = function(req, res) {
+    if (req.body.result.action == "ingredientDesc") {
+        getIngredient(req,res)
+      }
+    };
 
 exports.processWords = function(req, res) {
    // if (req.body.result.action == 'getRec') {
