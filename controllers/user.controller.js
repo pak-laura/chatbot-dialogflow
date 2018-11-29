@@ -39,11 +39,11 @@ exports.user_delete = function(req, res) {
 };
 
 function skin_type_rec(req, res) {
-   name = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.given-name ? req.body.queryResult.parameters.given-name : 'friend';
+   const name = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.given-name ? req.body.queryResult.parameters.given-name : 'friend';
    //const sType = req.body.skinType ? req.body.skinType : 'error';
-   sType = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinType ? req.body.queryResult.parameters.skinType : 'error';
+   const sType = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinType ? req.body.queryResult.parameters.skinType : 'error';
    // const problems = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinProblems ? req.body.queryResult.parameters.skinProblems : 'aging';
-   var sendingData = '';
+   let sendingData = '';
    if (sType == 'dry') {
       sendingData = 'Well, ' + name +', for dry skin, I recommend glycerin, PCA, and ceramides. Try to stay away from alcohol.';
    } else if (sType == 'oily') {
