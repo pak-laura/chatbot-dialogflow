@@ -78,8 +78,8 @@ function skin_type_rec(req, res) {
 
 
 function ingredient_info(req, res) {
-   ingred = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Ingredients ? req.body.queryResult.parameters.Ingredients : 'error';
-   var sendingData = '';
+   let ingred = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Ingredients ? req.body.queryResult.parameters.Ingredients : 'error';
+   let sendingData = '';
    sendingData = 'testing' + ingred;
 
    return res.json({
