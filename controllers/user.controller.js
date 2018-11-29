@@ -71,6 +71,7 @@ exports.skin_type_rec = function(req, res) {
 // don't forget the nice web page on handling 2 intents--it's in the actions
 
    return res.json({
+      fulfillmentTest: sendingData,
       speech: sendingData,
       displayText: sendingData,
       source: 'please-be-more-chill'
