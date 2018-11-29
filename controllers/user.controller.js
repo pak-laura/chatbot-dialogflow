@@ -92,9 +92,9 @@ function ingredient_info(req, res) {
 exports.processWords = function(req, res) {
    const action = req.body.queryResult && req.body.queryResult.action ? req.body.queryResult.action : 'error';
    if (action == 'getRec') {
-      skin_type_rec(req, res);
+      return skin_type_rec(req, res);
    } else if (action == 'ingredientDesc') {
-      ingredient_info(req, res);
+      return ingredient_info(req, res);
    } else {
       return res.json({
          fulfillmentText: 'Sorry, I don\'t understand. Can you repeat that?',
