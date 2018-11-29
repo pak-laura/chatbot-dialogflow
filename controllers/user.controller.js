@@ -38,23 +38,22 @@ exports.user_delete = function(req, res) {
    })
 };
 
-//function skin_type_rect(req, res) {
-exports.skin_type_rec = function(req, res) {
-   // const name = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.given-name ? req.body.queryResult.parameters.given-name : 'friend';
+function skin_type_rec(req, res) {
+   const name = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.given-name ? req.body.queryResult.parameters.given-name : 'friend';
    //const sType = req.body.skinType ? req.body.skinType : 'error';
    const sType = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinType ? req.body.queryResult.parameters.skinType : 'error';
    // const problems = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinProblems ? req.body.queryResult.parameters.skinProblems : 'aging';
    var sendingData = '';
    if (sType == 'dry') {
-      sendingData = 'For dry skin, I recommend glycerin, PCA, and ceramides. Try to stay away from alcohol.';
+      sendingData = 'Well, ' + name +', for dry skin, I recommend glycerin, PCA, and ceramides. Try to stay away from alcohol.';
    } else if (sType == 'oily') {
-      sendingData = 'For oily skin, I recommend dimethicone, glycolic acid, niacinamide, retinol, and salicylic acid. Try to stay away from petroleum and natural oils.';
+      sendingData = 'Well, ' + name +', for oily skin, I recommend dimethicone, glycolic acid, niacinamide, retinol, and salicylic acid. Try to stay away from petroleum and natural oils.';
    } else if (sType == 'combination') {
-      sendingData = 'For combination skin, I recommend witch hazel, lactic acid, green tea, and jojoba oil. Try to stay away from petroleum, natural oils, and alcohol.';
+      sendingData = 'Well, ' + name +', for combination skin, I recommend witch hazel, lactic acid, green tea, and jojoba oil. Try to stay away from petroleum, natural oils, and alcohol.';
    } else if (sType == 'normal') {
-      sendingData = 'For normal skin, I recommend aloe and caffeine (topical). Try to stay away from coconut oil.';
+      sendingData = 'Well, ' + name +', for normal skin, I recommend aloe and caffeine (topical). Try to stay away from coconut oil.';
    } else {
-      sendingData = 'I\'m afraid I don\'t recognize your skin type. Could you tell me what it is please?';
+      sendingData = 'Sorry, ' + name+', I\'m afraid I don\'t recognize your skin type. Could you tell me what it is please?';
    }
 
 // dry, oily, combination, normal
@@ -77,15 +76,29 @@ exports.skin_type_rec = function(req, res) {
 
 };
 
-function skin_type_red(req, res) {
+
+function ingredient_info(req, res) {
+   const ingred = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Ingredients ? req.body.queryResult.parameters.Ingredients : 'error';
+   var sendingData = '';
+   sendingData = 'testing' + ingred;
+
    return res.json({
-      words: 'testing skin_type_red'
+      fulfillmentText: sendingData,
+      source: 'please-be-more-chill'
    });
-}
+};
+
 
 exports.processWords = function(req, res) {
-   // if (req.body.result.action == 'getRec') {
-   //    skin_type_red(req, res);
-   // }
-   skin_type_red(req, res);
-}
+   const action = req.body.queryResult && req.body.queryResult.action ? req.body.queryResult.action : 'error';
+   if (action == 'getRec') {
+      skin_type_rec(req, res);
+   } else if (action == 'ingredientDesc') {
+      ingredient_info(req, res);
+   } else {
+      return res.json({
+         fulfillmentText: 'Sorry, I don\'t understand. Can you repeat that?',
+         source: 'please-be-more-chill'
+      });
+   }
+};
