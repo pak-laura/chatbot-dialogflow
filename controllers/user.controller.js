@@ -40,10 +40,10 @@ exports.user_delete = function(req, res) {
 
 //function skin_type_rect(req, res) {
 exports.skin_type_rec = function(req, res) {
-   const name = req.body.result && req.body.result.parameters && req.body.result.parameters.name ? req.body.result.parameters.name : 'friend';
+   const name = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.given-name ? req.body.queryResult.parameters.given-name : 'friend';
    //const sType = req.body.skinType ? req.body.skinType : 'error';
-   const sType = req.body.result && req.body.result.parameters && req.body.result.parameters.skinType ? req.body.result.parameters.skinType : 'error';
-   const problems = req.body.result && req.body.result.parameters && req.body.result.parameters.problems ? req.body.result.parameters.problems : 'aging';
+   const sType = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinType ? req.body.queryResult.parameters.skinType : 'error';
+   const problems = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinProblems ? req.body.queryResult.parameters.skinProblems : 'aging';
    var sendingData = '';
    if (sType == 'dry') {
       sendingData = 'For dry skin, I recommend glycerin, PCA, and ceramides. Try to stay away from alcohol.';
@@ -72,8 +72,6 @@ exports.skin_type_rec = function(req, res) {
 
    return res.json({
       fulfillmentText: sendingData,
-      speech: sendingData,
-      displayText: sendingData,
       source: 'please-be-more-chill'
    });
 
