@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/users', user);
 
-const PORT = 1234;
+const PORT = process.env.PORT || 1234;
 
 app.listen(PORT, () => {
    console.log('server running on port ', PORT)
