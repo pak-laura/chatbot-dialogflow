@@ -12,7 +12,6 @@ UserRouter.put('/:id/update', user_controller.user_update);
 
 UserRouter.delete('/:id/delete', user_controller.user_delete);
 
-UserRouter.post('/skinTypeRec', user_controller.skin_type_rec);
 UserRouter.post('/processIntents', user_controller.processWords);
 
 
