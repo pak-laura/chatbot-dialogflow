@@ -39,9 +39,9 @@ exports.user_delete = function(req, res) {
 };
 
 function skin_type_rec(req, res) {
-   const name = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.given-name ? req.body.queryResult.parameters.given-name : 'friend';
+   name = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.given-name ? req.body.queryResult.parameters.given-name : 'friend';
    //const sType = req.body.skinType ? req.body.skinType : 'error';
-   const sType = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinType ? req.body.queryResult.parameters.skinType : 'error';
+   sType = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinType ? req.body.queryResult.parameters.skinType : 'error';
    // const problems = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinProblems ? req.body.queryResult.parameters.skinProblems : 'aging';
    var sendingData = '';
    if (sType == 'dry') {
@@ -78,7 +78,7 @@ function skin_type_rec(req, res) {
 
 
 function ingredient_info(req, res) {
-   const ingred = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Ingredients ? req.body.queryResult.parameters.Ingredients : 'error';
+   ingred = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Ingredients ? req.body.queryResult.parameters.Ingredients : 'error';
    var sendingData = '';
    sendingData = 'testing' + ingred;
 
