@@ -56,7 +56,6 @@ exports.skin_type_rec = function(req, res) {
    } else {
       sendingData = 'I\'m afraid I don\'t recognize your skin type. Could you tell me what it is please?';
    }
-   res.send(sendingData);
 
 // dry, oily, combination, normal
 // acne, acne scarring, aging, dark spots, redness
@@ -71,11 +70,11 @@ exports.skin_type_rec = function(req, res) {
 // which should be easy except for the actual data grab
 // don't forget the nice web page on handling 2 intents--it's in the actions
 
-   // return res.json({
-   //    speech: sendingData,
-   //    displayText: sendingData,
-   //    source: 'please-be-more-chill'
-   // });
+   return res.json({
+      speech: sendingData,
+      displayText: sendingData,
+      source: 'please-be-more-chill'
+   });
 
 };
 
