@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const config = require('./db')
 
 const user = require('./routes/user.route');
-const mongoDB = process.env.MONGODB_URI || config.DB;
+// const mongoDB = process.env.MONGODB_URI || config.DB;
+const mongoDB = config.DB;
 mongoose.connect(mongoDB)
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;

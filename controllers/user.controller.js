@@ -1,7 +1,7 @@
 const User = require('../models/user.model');
 
 exports.test = function(req, res) {
-   res.send('hi from user controller test');
+   res.send('testing changes from controller');
 };
 
 exports.user_create = function(req, res) {
