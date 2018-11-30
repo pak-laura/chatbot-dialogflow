@@ -39,7 +39,7 @@ exports.user_delete = function(req, res) {
 };
 
 function skin_type_rec(req, res) {
-   const name = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.given-name ? req.body.queryResult.parameters.given-name : 'friend';
+   var name = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.given-name ? req.body.queryResult.parameters.given-name : 'friend';
    //const sType = req.body.skinType ? req.body.skinType : 'error';
    const sType = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinType ? req.body.queryResult.parameters.skinType : 'error';
    // const problems = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinProblems ? req.body.queryResult.parameters.skinProblems : 'aging';
