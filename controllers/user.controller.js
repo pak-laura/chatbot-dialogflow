@@ -79,54 +79,33 @@ function skin_type_rec(req, res) {
 };
 
 
-function ingredient_info(req, res) {
-   let ingred = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Ingredients ? req.body.queryResult.parameters.Ingredients : 'error';
-   let sendingData = '';
-   sendingData = 'testing' + ingred;
-
-   return res.json({
-      fulfillmentText: sendingData,
-      source: 'please-be-more-chill'
-   });
-};
-
-
 //get ingredient description
-function getIngredient(req,res) {
-let ingredientToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.name ? req.body.result.parameters.name : 'Unknown';
-ingredients.findOne({name:ingredientToSearch},function(err,ingredientExists)
+function ingredient_info(req,res) {
+   let ingredientToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.name ? req.body.result.parameters.name : 'Unknown';
+   ingredients.findOne({name:ingredientToSearch},function(err,ingredientExists)
       {
-        if (err)
-        {
-          return res.json({
-              speech: 'Something went wrong!',
-              displayText: 'Something went wrong!',
-              source: 'ingrediet info'
-          });
-        }
-if (ingredientExists)
-        {
-          return res.json({
-                speech: ingredientExists.description,
-                displayText: ingredientExists.description,
-                source: 'ingredient info'
+         if (err)
+         {
+            return res.json({
+               fulfillmentText: 'Something went wrong!',
+               source: 'ingrediet info'
             });
-        }
-        else {
-          return res.json({
-                speech: 'Currently I am not having information about this ingredient',
-                displayText: 'Currently I am not having information about this ingredient',
-                source: 'ingredient info'
-            });
-        }
-      });
-}
-
-exports.processRequest = function(req, res) {
-    if (req.body.result.action == "ingredientDesc") {
-        getIngredient(req,res)
+         }
+   if (ingredientExists)
+      {
+         return res.json({
+               fulfillmentText: ingredientExists.description,
+               source: 'ingredient info'
+         });
       }
-    };
+      else {
+         return res.json({
+               fulfillmentText: 'Currently I do not have information about this ingredient',
+               source: 'ingredient info'
+         });
+      }
+   });
+}
 
 exports.processWords = function(req, res) {
    const action = req.body.queryResult && req.body.queryResult.action ? req.body.queryResult.action : 'error';
