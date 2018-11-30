@@ -1,6 +1,6 @@
 const User = require('../models/user.model');
 var mongoose = require('mongoose')
-var ingredients = mongoose.model('IngredSchema')
+var ingredients = mongoose.model('../models/IngredSchema')
 
 exports.test = function(req, res) {
    res.send('testing changes from controller');
