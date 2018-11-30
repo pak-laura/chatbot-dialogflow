@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const IngredSchema = new Schema({
+var IngredSchema = new Schema({
    name: { type: String},
    description: {type: String},
    goodSkin: { type: String},
@@ -11,4 +11,4 @@ const IngredSchema = new Schema({
    //    collection: 'users'
 });
 
-module.exports = mongoose.model('Ingred', IngredSchema);
+module.exports = mongoose.model('IngredSchema', IngredSchema);

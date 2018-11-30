@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./db')
 
+//IngredSchema = require('./models/IngredSchema')
+
 const user = require('./routes/user.route');
 // const mongoDB = process.env.MONGODB_URI || config.DB;
 const mongoDB = config.DB;
