@@ -53,7 +53,7 @@ function skin_type_rec(req, res) {
    } else if (sType == 'normal') {
       sendingData = 'Well, ' + name +', for normal skin, I recommend aloe and caffeine (topical). Try to stay away from coconut oil.';
    } else {
-      sendingData = 'Sorry, ' + name+', I\'m afraid I don\'t recognize your skin type. Could you tell me what it is please?';
+      sendingData = 'Sorry, ' + name+', I\'m afraid I don\'t recognize your skin type. Could you tell me if it\'s dry, oily, normal, or combination?';
    }
 
 // dry, oily, combination, normal
