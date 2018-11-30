@@ -45,15 +45,15 @@ function skin_type_rec(req, res) {
    // const problems = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.skinProblems ? req.body.queryResult.parameters.skinProblems : 'aging';
    let sendingData = '';
    if (sType == 'dry') {
-      sendingData = 'Well, ' + ', for dry skin, I recommend glycerin, PCA, and ceramides. Try to stay away from alcohol.';
+      sendingData = 'Well, ' + name+', for dry skin, I recommend glycerin, PCA, and ceramides. Try to stay away from alcohol.';
    } else if (sType == 'oily') {
-      sendingData = 'Well, ' + ', for oily skin, I recommend dimethicone, glycolic acid, niacinamide, retinol, and salicylic acid. Try to stay away from petroleum and natural oils.';
+      sendingData = 'Well, ' +  name+', for oily skin, I recommend dimethicone, glycolic acid, niacinamide, retinol, and salicylic acid. Try to stay away from petroleum and natural oils.';
    } else if (sType == 'combination') {
-      sendingData = 'Well, ' + ', for combination skin, I recommend witch hazel, lactic acid, green tea, and jojoba oil. Try to stay away from petroleum, natural oils, and alcohol.';
+      sendingData = 'Well, ' +  name+', for combination skin, I recommend witch hazel, lactic acid, green tea, and jojoba oil. Try to stay away from petroleum, natural oils, and alcohol.';
    } else if (sType == 'normal') {
-      sendingData = 'Well, ' + ', for normal skin, I recommend aloe and caffeine (topical). Try to stay away from coconut oil.';
+      sendingData = 'Well, ' + name+ ', for normal skin, I recommend aloe and caffeine (topical). Try to stay away from coconut oil.';
    } else {
-      sendingData = 'Sorry, ' +', I\'m afraid I don\'t recognize your skin type. Could you tell me if it\'s dry, oily, normal, or combination?';
+      sendingData = 'Sorry, ' + name+', I\'m afraid I don\'t recognize your skin type. Could you tell me if it\'s dry, oily, normal, or combination?';
    }
 
 // dry, oily, combination, normal
