@@ -81,7 +81,8 @@ function skin_type_rec(req, res) {
 
 //get ingredient description
 function ingredient_info(req,res) {
-   let ingredientToSearch = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.name ? req.body.queryResult.parameters.name : 'Unknown';
+   let ingredientToSearch = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Ingredients ? req.body.queryResult.parameters.Ingredients : 'Unknown';
+   console.log(ingredientToSearch);
    Ingred.findOne({name:ingredientToSearch},function(err,ingredientExists) {
       if (err) {
          return res.json({
