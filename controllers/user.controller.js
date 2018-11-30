@@ -1,6 +1,6 @@
 const User = require('../models/user.model');
 var mongoose = require('mongoose')
-var ingredients = mongoose.model('../models/IngredSchema')
+const Ingred = require('../models/IngredSchema')
 
 exports.test = function(req, res) {
    res.send('testing changes from controller');
@@ -82,26 +82,23 @@ function skin_type_rec(req, res) {
 //get ingredient description
 function ingredient_info(req,res) {
    let ingredientToSearch = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.name ? req.body.queryResult.parameters.name : 'Unknown';
-   ingredients.findOne({name:ingredientToSearch},function(err,ingredientExists)
-      {
-         if (err)
-         {
-            return res.json({
-               fulfillmentText: 'Something went wrong!',
-               source: 'ingredient info'
-            });
-         }
-   if (ingredientExists)
-      {
+   Ingred.findOne({name:ingredientToSearch},function(err,ingredientExists) {
+      if (err) {
          return res.json({
-               fulfillmentText: ingredientExists.description,
-               source: 'ingredient info'
+            fulfillmentText: 'Something went wrong!',
+            source: 'ingredient info'
+         });
+      }
+      if (ingredientExists) {
+         return res.json({
+            fulfillmentText: ingredientExists.description,
+            source: 'ingredient info'
          });
       }
       else {
          return res.json({
-               fulfillmentText: 'Currently I do not have information about this ingredient',
-               source: 'ingredient info'
+            fulfillmentText: 'Currently I do not have information about this ingredient',
+            source: 'ingredient info'
          });
       }
    });

@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var IngredSchema = new Schema({
+const IngredSchema = new Schema({
    name: { type: String},
    description: {type: String},
    goodSkin: { type: String},
