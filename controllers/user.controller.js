@@ -81,14 +81,14 @@ function skin_type_rec(req, res) {
 
 //get ingredient description
 function ingredient_info(req,res) {
-   let ingredientToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.name ? req.body.result.parameters.name : 'Unknown';
+   let ingredientToSearch = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.name ? req.body.queryResult.parameters.name : 'Unknown';
    ingredients.findOne({name:ingredientToSearch},function(err,ingredientExists)
       {
          if (err)
          {
             return res.json({
                fulfillmentText: 'Something went wrong!',
-               source: 'ingrediet info'
+               source: 'ingredient info'
             });
          }
    if (ingredientExists)
